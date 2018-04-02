@@ -7,11 +7,10 @@
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UseMSBuildEngine>true</UseMSBuildEngine>
     <OutputType>Library</OutputType>
-    <RootNamespace>MovieDTT.Core</RootNamespace>
-    <AssemblyName>MovieDTT.Core</AssemblyName>
+    <RootNamespace>eBooksDT.Core</RootNamespace>
+    <AssemblyName>eBooksDT.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
-    
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,6 +34,10 @@
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\DetailedMovie.cs" />
     <Compile Include="Constants\AppConstants.cs" />
+    <Compile Include="Services\Book.cs" />
+    <Compile Include="Services\Books.cs" />
+    <Compile Include="Services\Program.cs" />
+    <Compile Include="Services\SerializeHelper.cs" />
     <Compile Include="Services\TMDBMovieService.cs" />
     <Compile Include="Helpers\ErrorLog.cs" />
   </ItemGroup>
@@ -45,6 +48,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.7.2.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\HtmlAgilityPack.1.7.2\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="ModernHttpClient, Version=2.4.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\modernhttpclient.2.4.2\lib\Portable-Net45+WinRT45+WP8+WPA81\ModernHttpClient.dll</HintPath>
     </Reference>

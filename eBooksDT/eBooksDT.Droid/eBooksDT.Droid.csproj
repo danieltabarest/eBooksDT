@@ -6,8 +6,8 @@
     <ProjectGuid>{52044E72-2116-4579-B9D5-734A3C153F89}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>MovieDTT.Droid</RootNamespace>
-    <AssemblyName>MovieDTT.Droid</AssemblyName>
+    <RootNamespace>eBooksDT.Droid</RootNamespace>
+    <AssemblyName>eBooksDT.Droid</AssemblyName>
     <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>

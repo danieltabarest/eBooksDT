@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBooksDT", "eBooksDT\eBooksDT.csproj", "{66A54CF3-6639-4093-84A1-3C4ED6079747}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBooksDT", "eBooksDT\eBooksDT\eBooksDT.csproj", "{66A54CF3-6639-4093-84A1-3C4ED6079747}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBooksDT.Core", "eBooksDT.Core\eBooksDT.Core.csproj", "{94767FC4-78F3-47D7-B895-2B30D306384B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBooksDT.Core", "eBooksDT\eBooksDT.Core\eBooksDT.Core.csproj", "{94767FC4-78F3-47D7-B895-2B30D306384B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBooksDT.Droid", "eBooksDT.Droid\eBooksDT.Droid.csproj", "{52044E72-2116-4579-B9D5-734A3C153F89}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBooksDT.Droid", "eBooksDT\eBooksDT.Droid\eBooksDT.Droid.csproj", "{52044E72-2116-4579-B9D5-734A3C153F89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
