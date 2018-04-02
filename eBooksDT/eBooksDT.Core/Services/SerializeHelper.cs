@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization.Json;
 using System.Text;
 
-namespace gITEBooksGrabber
+namespace eBooksDT.Core
 {
 	public static class SerializeHelper
 	{

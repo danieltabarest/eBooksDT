@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 
-namespace gITEBooksGrabber
+namespace eBooksDT.Core
 {
 	[DataContract]
 	public class Books

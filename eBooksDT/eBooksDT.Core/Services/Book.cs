@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 
-namespace gITEBooksGrabber
+namespace eBooksDT.Core
 {
 	[DataContract]
 	public class Book

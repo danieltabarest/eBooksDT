@@ -19,6 +19,7 @@ namespace eBooksDT.Core
     {
         private Genres _genres = null;
         private Configuration _tmdbConfiguration;
+        Books bs = new Books();
         private HttpClient _baseClient;
 
         private HttpClient BaseClient
