@@ -38,6 +38,7 @@
     <Compile Include="Services\Books.cs" />
     <Compile Include="Services\Program.cs" />
     <Compile Include="Services\SerializeHelper.cs" />
+    <Compile Include="Services\BooksService.cs" />
     <Compile Include="Services\TMDBMovieService.cs" />
     <Compile Include="Helpers\ErrorLog.cs" />
   </ItemGroup>
