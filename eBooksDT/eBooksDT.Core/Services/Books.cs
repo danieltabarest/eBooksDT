@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
+using eBooksDT.Core.Models;
 using HtmlAgilityPack;
 
 namespace eBooksDT.Core

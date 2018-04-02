@@ -43,6 +43,7 @@ namespace eBooksDT
         {
             //Services
             Container.RegisterInstance<IMovieService>(new TMDBMovieService());
+            Container.RegisterInstance<IBooksService>(new BooksService());
             Container.RegisterInstance<IUserDialogs>(UserDialogs.Instance);
 
             //Pages

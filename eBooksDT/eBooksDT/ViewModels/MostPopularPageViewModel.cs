@@ -19,7 +19,8 @@ namespace eBooksDT.ViewModels
 	public class MostPopularPageViewModel : BaseViewModel
 	{
 		private readonly IMovieService _movieService;
-		private readonly IRepository<eBooksDT.Models.Movie> _movieRepo;
+        private readonly IBooksService _ibooksservice;
+        private readonly IRepository<eBooksDT.Models.Movie> _movieRepo;
 
         public DelegateCommand<DetailedMovie> AddWatchListCommand { get; set; }
         public DelegateCommand<DetailedMovie> AddSeenCommand { get; set; }
@@ -27,8 +28,8 @@ namespace eBooksDT.ViewModels
         private DelegateCommand<ItemTappedEventArgs> _goToDetailPage;
 
 
-        private List<eBooksDT.Core.Models.DetailedMovie> _mostPopularList;
-		public List<eBooksDT.Core.Models.DetailedMovie> MostPopularList
+        private List<eBooksDT.Core.Models.DetailedBook> _mostPopularList;
+		public List<eBooksDT.Core.Models.DetailedBook> MostPopularList
 		{
 			get { return _mostPopularList; }
 			set { SetProperty(ref _mostPopularList, value); }
@@ -55,8 +56,9 @@ namespace eBooksDT.ViewModels
 		{
 			try
 			{
-				MostPopularList = await _movieService.DiscoverMovie(Core.Constants.DiscoverOption.Popular);
-			}
+				//MostPopularList = await _movieService.DiscoverMovie(Core.Constants.DiscoverOption.Popular);
+                MostPopularList = await _ibooksservice.DiscoverBooks(Core.Constants.DiscoverOption.Popular);
+            }
 			catch (Exception ex)
 			{
 				ErrorLog.LogError("Getting Highest rated movies", ex);
@@ -87,6 +89,8 @@ namespace eBooksDT.ViewModels
         {
             try
             {
+
+                var booksGet = await _movieRepo.Get(x => x.ToWatch == true);
                 var movieGet = await _movieRepo.Get(x => x.MovieId == detailedMovie.Id && x.ToWatch == true);
 
                 if (movieGet == null)

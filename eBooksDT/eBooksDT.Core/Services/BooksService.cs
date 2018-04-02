@@ -15,7 +15,7 @@ using Newtonsoft.Json;
 
 namespace eBooksDT.Core
 {
-    public class BooksService : IMovieService
+    public class BooksService : IBooksService
     {
         private Genres _genres = null;
         private Configuration _tmdbConfiguration;
@@ -55,12 +55,12 @@ namespace eBooksDT.Core
             }
         }
 
-        public async Task<List<DetailedMovie>> SearchMovie(string movieTitle)
+        public async Task<List<DetailedBook>> SearchBooks(string BooksTitle)
         {
             try
             {
-                var res = await BaseClient.GetAsync(string.Format(AppConstants.TmdbMovieSearchUrl, AppConstants.TmdbApiKey,
-                    movieTitle));
+                /*var res = await BaseClient.GetAsync(string.Format(AppConstants.TmdbMovieSearchUrl, AppConstants.TmdbApiKey,
+                    movieTitle))
                 res.EnsureSuccessStatusCode();
 
                 var json = await res.Content.ReadAsStringAsync();
@@ -72,12 +72,13 @@ namespace eBooksDT.Core
 
                 var movieList = movies.results.Where(x => x.original_title != null).Select(movie => GetDetailMovie(movie)).ToList();
 
-                return movieList;
+                return movieList;*/
+                return null;
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(typeof(TMDBMovieService).Name,
-                    "Ooops! Something went wrong fetching information for: {0}. Exception: {1}", movieTitle, ex);
+                    "Ooops! Something went wrong fetching information for: {0}. Exception: {1}", "", ex);
                 return null;
             }
         }
@@ -112,7 +113,7 @@ namespace eBooksDT.Core
             return string.Format("{0}{1}({2})", movie.title.Substring(0, Math.Min(movie.title.Length, AppConstants.MovieTitleMaxLength)),movie.title.Length > AppConstants.MovieTitleMaxLength ? "..." : " ", string.IsNullOrEmpty(movie.release_date) ? "N/A" : movie.release_date.Substring(0, 4));
         }
 
-        public async Task<List<DetailedMovie>> DiscoverMovie(DiscoverOption option)
+        public async Task<List<DetailedBook>> DiscoverBooks(DiscoverOption option)
         {
             try
             {
@@ -123,9 +124,9 @@ namespace eBooksDT.Core
                 switch (option)
                 {
                     case DiscoverOption.Popular:
-                        dscUrl = string.Format(AppConstants.TmdbMoviePopular, AppConstants.TmdbApiKey);
+                        dscUrl = string.Format(AppConstants.BooksPopular);
                         break;
-                    case DiscoverOption.HighestRated:
+                   /* case DiscoverOption.HighestRated:
                         dscUrl = string.Format(AppConstants.TmdbMovieHighestRated, AppConstants.TmdbApiKey);
                         break;
                     case DiscoverOption.InTheaters:
@@ -138,7 +139,7 @@ namespace eBooksDT.Core
                         break;
                     default:
                         dscUrl = string.Format(AppConstants.TmdbMoviePopular, AppConstants.TmdbApiKey);
-                        break;
+                        break;*/
                 }
 
                 var res = await BaseClient.GetAsync(dscUrl);
@@ -148,12 +149,14 @@ namespace eBooksDT.Core
 
                 if (string.IsNullOrEmpty(json)) return null;
 
-                var movies = JsonConvert.DeserializeObject<Movies>(json);
+                var books= JsonConvert.DeserializeObject<Book>(json);
+                //var movies = JsonConvert.DeserializeObject<Movies>(json);
                 await GetConfigurationIfNeeded();
 
-                var movieList = movies.results.Where(x => x.original_title != null).Select(movie => GetDetailMovie(movie)).ToList();
+                var bookList = books;
 
-                return movieList;
+                return null;
+                //return bookList;
             }
             catch (Exception ex)
             {
@@ -164,24 +167,25 @@ namespace eBooksDT.Core
         }
 
 
-        public async Task<DetailedMovie> DetailedMovieFromId(int id)
+        public async Task<DetailedBook> DetailedBooksFromId(int id)
         {
             try
             {
-                var res = await BaseClient.GetAsync(string.Format(AppConstants.TmdbMovieUrl, AppConstants.TmdbApiKey,
-                    id));
-                res.EnsureSuccessStatusCode();
+                return null;
+                /* var res = await BaseClient.GetAsync(string.Format(AppConstants.TmdbMovieUrl, AppConstants.TmdbApiKey,
+                     id));
+                 res.EnsureSuccessStatusCode();
 
-                var json = await res.Content.ReadAsStringAsync();
+                 var json = await res.Content.ReadAsStringAsync();
 
-                if (string.IsNullOrEmpty(json)) return null;
+                 if (string.IsNullOrEmpty(json)) return null;
 
-                var movie = JsonConvert.DeserializeObject<TmdbMovie>(json);
-                await GetConfigurationIfNeeded();
+                 var movie = JsonConvert.DeserializeObject<TmdbMovie>(json);
+                 await GetConfigurationIfNeeded();
 
-                var detailed = GetDetailMovie(movie);
+                 var detailed = GetDetailMovie(movie);
 
-                return detailed;
+                 return detailed;*/
             }
             catch (Exception ex)
             {
@@ -253,6 +257,8 @@ namespace eBooksDT.Core
                 return _genres;
             }
         }
+
+      
     }
 
 }
