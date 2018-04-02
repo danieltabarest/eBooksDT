@@ -12,8 +12,8 @@ using HtmlAgilityPack;
 namespace eBooksDT.Core
 {
 	[DataContract]
-	public class Books
-	{
+	public class prueba
+    {
 		[DataMember]
 		private Dictionary<int, Book> _dBooks = new Dictionary<int, Book>();
 

@@ -28,8 +28,8 @@ namespace eBooksDT.ViewModels
         private DelegateCommand<ItemTappedEventArgs> _goToDetailPage;
 
 
-        private List<eBooksDT.Core.Models.DetailedBook> _mostPopularList;
-		public List<eBooksDT.Core.Models.DetailedBook> MostPopularList
+        private List<eBooksDT.Core.Models.Books> _mostPopularList;
+		public List<eBooksDT.Core.Models.Books> MostPopularList
 		{
 			get { return _mostPopularList; }
 			set { SetProperty(ref _mostPopularList, value); }
@@ -37,12 +37,13 @@ namespace eBooksDT.ViewModels
 
 		private bool _isActive;
 
-		public MostPopularPageViewModel(IPageDialogService pageDialogService, INavigationService navigationService, IMovieService movieService)
+		public MostPopularPageViewModel(IPageDialogService pageDialogService, INavigationService navigationService, IMovieService movieService, IBooksService ibooksservice)
             : base(pageDialogService, navigationService)
         {
 			_movieService = movieService;
+            _ibooksservice = ibooksservice;
 
-			var connectionService = Xamarin.Forms.DependencyService.Get<ISQLite>();
+            var connectionService = Xamarin.Forms.DependencyService.Get<ISQLite>();
 			_movieRepo = new Repository<eBooksDT.Models.Movie>(connectionService);
 
             AddWatchListCommand = new DelegateCommand<DetailedMovie>(async (DetailedMovie arg) => await AddToWatchList(arg));

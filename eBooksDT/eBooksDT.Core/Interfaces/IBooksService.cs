@@ -10,6 +10,6 @@ namespace eBooksDT.Core.Interfaces
     {
 		Task<List<DetailedBook>> SearchBooks(string BooksTitle);
 		Task<DetailedBook> DetailedBooksFromId(int id);
-		Task<List<DetailedBook>> DiscoverBooks(DiscoverOption option);
+		Task<List<Books>> DiscoverBooks(DiscoverOption option);
 	}
 }

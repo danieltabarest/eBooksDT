@@ -113,7 +113,7 @@ namespace eBooksDT.Core
             return string.Format("{0}{1}({2})", movie.title.Substring(0, Math.Min(movie.title.Length, AppConstants.MovieTitleMaxLength)),movie.title.Length > AppConstants.MovieTitleMaxLength ? "..." : " ", string.IsNullOrEmpty(movie.release_date) ? "N/A" : movie.release_date.Substring(0, 4));
         }
 
-        public async Task<List<DetailedBook>> DiscoverBooks(DiscoverOption option)
+        public async Task<List<Books>> DiscoverBooks(DiscoverOption option)
         {
             try
             {
@@ -151,12 +151,10 @@ namespace eBooksDT.Core
 
                 var books= JsonConvert.DeserializeObject<Book>(json);
                 //var movies = JsonConvert.DeserializeObject<Movies>(json);
-                await GetConfigurationIfNeeded();
+                //await GetConfigurationIfNeeded();
 
-                var bookList = books;
-
-                return null;
-                //return bookList;
+                var bookList = books.Books;
+                return bookList;
             }
             catch (Exception ex)
             {

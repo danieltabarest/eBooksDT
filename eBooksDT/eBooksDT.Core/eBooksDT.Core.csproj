@@ -37,8 +37,7 @@
     <Compile Include="Models\DetailedMovie.cs" />
     <Compile Include="Constants\AppConstants.cs" />
     <Compile Include="Models\Book.cs" />
-    <Compile Include="Services\Books.cs" />
-    <Compile Include="Services\Program.cs" />
+    <Compile Include="Services\prueba.cs" />
     <Compile Include="Services\SerializeHelper.cs" />
     <Compile Include="Services\BooksService.cs" />
     <Compile Include="Services\TMDBMovieService.cs" />

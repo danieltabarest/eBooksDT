@@ -10,7 +10,7 @@ namespace eBooksDT.Core.Constants
 		public const string TmdbMovieSearchUrl = "search/multi?api_key={0}&query={1}";
 		public const string TmdbMovieInTheaters = "discover/movie?api_key={0}&primary_release_date.gte={1}&primary_release_date.lte={2}";
 		public const string TmdbMoviePopular = "discover/movie?api_key={0}&sort_by=popularity.desc";
-        public const string BooksPopular = "http://it-ebooks.info/";
+        public const string BooksPopular = "http://it-ebooks-api.info/v1/search/php mysql";
         public const string TmdbMovieHighestRated = "discover/movie?api_key={0}&certification_country=US&certification=R&sort_by=vote_average.desc";
 		public const string TmdbConfigurationUrl = "configuration?api_key={0}";
 		public const string TmdbMovieUrl = "movie/{1}?api_key={0}";
