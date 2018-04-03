@@ -150,11 +150,8 @@ namespace eBooksDT.Core
                 if (string.IsNullOrEmpty(json)) return null;
 
                 var books= JsonConvert.DeserializeObject<Book>(json);
-                //var movies = JsonConvert.DeserializeObject<Movies>(json);
-                //await GetConfigurationIfNeeded();
 
-                var bookList = books.Books;
-                return bookList;
+                return books.Books;
             }
             catch (Exception ex)
             {

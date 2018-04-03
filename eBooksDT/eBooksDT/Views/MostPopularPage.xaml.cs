@@ -11,7 +11,14 @@ namespace eBooksDT.Views
 	{
 		public MostPopularPage()
 		{
-			InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+
+            }
 		}
 	}
 }

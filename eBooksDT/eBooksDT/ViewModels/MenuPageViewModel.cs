@@ -91,19 +91,6 @@ namespace eBooksDT.ViewModels
                     Destination = Constants.InitialUrl
                 });
 
-                menuItems.Add(new MenuItem()
-                {
-                    Title = "WatchList",
-                    Icon = "ic_watch_later.png",
-                    Destination = Constants.WatchListPage
-                });
-
-                menuItems.Add(new MenuItem()
-                {
-                    Title = "Seen Movies",
-                    Icon = "ic_seen.png",
-                    Destination = Constants.SeenMoviesPage
-                });
 
                 menuItems.Add(new MenuItem()
                 {

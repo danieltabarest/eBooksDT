@@ -18,13 +18,11 @@ namespace eBooksDT.ViewModels
 {
 	public class MostPopularPageViewModel : BaseViewModel
 	{
-		private readonly IMovieService _movieService;
         private readonly IBooksService _ibooksservice;
-        private readonly IRepository<eBooksDT.Models.Movie> _movieRepo;
 
-        public DelegateCommand<DetailedMovie> AddWatchListCommand { get; set; }
-        public DelegateCommand<DetailedMovie> AddSeenCommand { get; set; }
-        public DelegateCommand<DetailedMovie> AddListCommand { get; set; }
+        public DelegateCommand<Books> AddWatchListCommand { get; set; }
+        public DelegateCommand<Books> AddSeenCommand { get; set; }
+        public DelegateCommand<Books> AddListCommand { get; set; }
         private DelegateCommand<ItemTappedEventArgs> _goToDetailPage;
 
 
@@ -40,15 +38,13 @@ namespace eBooksDT.ViewModels
 		public MostPopularPageViewModel(IPageDialogService pageDialogService, INavigationService navigationService, IMovieService movieService, IBooksService ibooksservice)
             : base(pageDialogService, navigationService)
         {
-			_movieService = movieService;
             _ibooksservice = ibooksservice;
 
             var connectionService = Xamarin.Forms.DependencyService.Get<ISQLite>();
-			_movieRepo = new Repository<eBooksDT.Models.Movie>(connectionService);
 
-            AddWatchListCommand = new DelegateCommand<DetailedMovie>(async (DetailedMovie arg) => await AddToWatchList(arg));
-            AddSeenCommand = new DelegateCommand<DetailedMovie>(async (DetailedMovie arg) => await AddToSeenList(arg));
-            AddListCommand = new DelegateCommand<DetailedMovie>(async (DetailedMovie arg) => await AddToList(arg));
+            AddWatchListCommand = new DelegateCommand<Books>(async (Books arg) => await AddToWatchList(arg));
+            AddSeenCommand = new DelegateCommand<Books>(async (Books arg) => await AddToSeenList(arg));
+            AddListCommand = new DelegateCommand<Books>(async (Books arg) => await AddToList(arg));
 
             Task.Run(LoadList).ConfigureAwait(true);
 		}
@@ -75,8 +71,8 @@ namespace eBooksDT.ViewModels
                     _goToDetailPage = new DelegateCommand<ItemTappedEventArgs>(async selected =>
                     {
                         var param = new NavigationParameters();
-                        var movie = selected.Item as DetailedMovie;
-                        param.Add("movie", movie);
+                        var movie = selected.Item as Books;
+                        param.Add("books", movie);
 
                         await NavigateToUriWithModalOption(Constants.MovieDetailPageNoNav, param, false);
                     });
@@ -86,24 +82,24 @@ namespace eBooksDT.ViewModels
             }
         }
 
-        private async Task AddToWatchList(DetailedMovie detailedMovie)
+        private async Task AddToWatchList(Books DetailedBook)
         {
             try
             {
 
-                var booksGet = await _movieRepo.Get(x => x.ToWatch == true);
-                var movieGet = await _movieRepo.Get(x => x.MovieId == detailedMovie.Id && x.ToWatch == true);
+                /*var booksGet = await _movieRepo.Get(x => x.ToWatch == true);
+                var movieGet = await _movieRepo.Get(x => x.MovieId == DetailedBook.Id && x.ToWatch == true);
 
                 if (movieGet == null)
                 {
                     await _movieRepo.Insert(new eBooksDT.Models.Movie
                     {
-                        MovieName = detailedMovie.OriginalTitle,
+                        MovieName = DetailedBook.OriginalTitle,
                         ToWatch = true,
-                        PosterURL = detailedMovie.PosterUrl,
-                        MovieRate = detailedMovie?.Score == null ? "N/A" : detailedMovie?.Score.ToString(),
-                        MovieDescription = detailedMovie.Overview,
-                        MovieId = detailedMovie.Id,
+                        PosterURL = DetailedBook.PosterUrl,
+                        MovieRate = DetailedBook?.Score == null ? "N/A" : DetailedBook?.Score.ToString(),
+                        MovieDescription = DetailedBook.Overview,
+                        MovieId = DetailedBook.Id,
                         DateAdded = DateTime.Now
                     });
 
@@ -112,7 +108,7 @@ namespace eBooksDT.ViewModels
                 else
                 {
                     await DisplayDialog("Info", "This Movie already exist in your watchlist", "Ok");
-                }
+                }*/
             }
             catch (Exception ex)
             {
@@ -120,22 +116,22 @@ namespace eBooksDT.ViewModels
             }
         }
 
-        private async Task AddToSeenList(DetailedMovie detailedMovie)
+        private async Task AddToSeenList(Books DetailedBook)
         {
             try
             {
-                await _movieRepo.Insert(new eBooksDT.Models.Movie
+              /*  await _movieRepo.Insert(new eBooksDT.Models.Movie
                 {
-                    MovieName = detailedMovie.OriginalTitle,
+                    MovieName = DetailedBook.OriginalTitle,
                     AlreadySeen = true,
-                    PosterURL = detailedMovie.PosterUrl,
-                    MovieRate = detailedMovie?.Score == null ? "N/A" : detailedMovie?.Score.ToString(),
-                    MovieDescription = detailedMovie.Overview,
-                    MovieId = detailedMovie.Id,
+                    PosterURL = DetailedBook.PosterUrl,
+                    MovieRate = DetailedBook?.Score == null ? "N/A" : DetailedBook?.Score.ToString(),
+                    MovieDescription = DetailedBook.Overview,
+                    MovieId = DetailedBook.Id,
                     DateAdded = DateTime.Now
                 });
 
-                await DisplayDialog("Info", "Added to Seen Movies", "Ok");
+                await DisplayDialog("Info", "Added to Seen Movies", "Ok");*/
             }
             catch (Exception ex)
             {
@@ -143,12 +139,12 @@ namespace eBooksDT.ViewModels
             }
         }
 
-        private async Task AddToList(DetailedMovie detailedMovie)
+        private async Task AddToList(Books DetailedBook)
         {
             try
 			{
 				var param = new NavigationParameters();
-				param.Add("movie", detailedMovie);
+				param.Add("movie", DetailedBook);
 
 				await NavigateToUri(Constants.AddToListPage, param);
 			}
