@@ -5,9 +5,7 @@
             xmlns:views="clr-namespace:eBooksDT.Views"
 			xmlns:appInfo="clr-namespace:eBooksDT.assembly=eBooksDT"
             prism:ViewModelLocator.AutowireViewModel="True"
-			Title="Movie List"
+			Title="Book List"
 			x:Class="eBooksDT.Views.HomePage">
     <views:MostPopularPage Icon="ic_grade.png" />
-    <views:InTheatersPage Icon="ic_theaters.png" />
-    <views:ComingSoonPage Icon="ic_watch_later.png" />
 </TabbedPage>

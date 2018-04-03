@@ -17,8 +17,6 @@ namespace eBooksDT.Core
 {
     public class BooksService : IBooksService
     {
-        private Genres _genres = null;
-        private Configuration _tmdbConfiguration;
         Books bs = new Books();
         private HttpClient _baseClient;
 
@@ -33,28 +31,7 @@ namespace eBooksDT.Core
             }
         }
 
-        private async Task GetConfigurationIfNeeded()
-        {
-            if (_tmdbConfiguration != null) return;
-
-            try
-            {
-                var res = await BaseClient.GetAsync(string.Format(AppConstants.TmdbConfigurationUrl, AppConstants.TmdbApiKey));
-                res.EnsureSuccessStatusCode();
-
-                var json = await res.Content.ReadAsStringAsync();
-
-                if (string.IsNullOrEmpty(json)) throw new Exception("Return content was empty :(");
-
-                _tmdbConfiguration = JsonConvert.DeserializeObject<Configuration>(json);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(typeof(TMDBMovieService).Name,
-                    "Ooops! Something went wrong fetching the configuration. Exception: {1}", ex);
-            }
-        }
-
+      
         public async Task<List<DetailedBook>> SearchBooks(string BooksTitle)
         {
             try
@@ -77,13 +54,13 @@ namespace eBooksDT.Core
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(typeof(TMDBMovieService).Name,
+                Debug.WriteLine(typeof(BooksService).Name,
                     "Ooops! Something went wrong fetching information for: {0}. Exception: {1}", "", ex);
                 return null;
             }
         }
 
-        private DetailedMovie GetDetailMovie(TmdbMovie movie)
+       /* private DetailedMovie GetDetailMovie(TmdbMovie movie)
         {
             
             return new DetailedMovie
@@ -112,14 +89,12 @@ namespace eBooksDT.Core
         {
             return string.Format("{0}{1}({2})", movie.title.Substring(0, Math.Min(movie.title.Length, AppConstants.MovieTitleMaxLength)),movie.title.Length > AppConstants.MovieTitleMaxLength ? "..." : " ", string.IsNullOrEmpty(movie.release_date) ? "N/A" : movie.release_date.Substring(0, 4));
         }
-
+        */
         public async Task<List<Books>> DiscoverBooks(DiscoverOption option)
         {
             try
             {
                 var dscUrl = string.Empty;
-
-                if (_genres == null) GetGenres();
 
                 switch (option)
                 {
@@ -155,7 +130,7 @@ namespace eBooksDT.Core
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(typeof(TMDBMovieService).Name,
+                Debug.WriteLine(typeof(BooksService).Name,
                                 "Ooops! Something went wrong fetching information for: {0}. Exception: {1}", option.ToString(), ex);
                 return null;
             }
@@ -184,75 +159,15 @@ namespace eBooksDT.Core
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(typeof(TMDBMovieService).Name,
+                Debug.WriteLine(typeof(BooksService).Name,
                     "Ooops! Something went wrong fetching information id: {0}. Exception: {1}", id, ex);
                 return null;
             }
         }
 
-        private string GetGenresString(string genresIDs)
-        {
-            var _gen = string.Empty;
+       
 
-            try
-            {
-                var ids = genresIDs?.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-
-                if (ids.Count() > 0)
-                {
-                    int i = 0;
-                    foreach (var genreId in ids)
-                    {
-                        i++;
-
-                        var g = _genres.genres.FirstOrDefault(x => x.id == Int32.Parse(genreId));
-
-                        var genreName = (g != null) ? g.name : string.Empty;
-
-                        if (!string.IsNullOrEmpty(genreName))
-                        {
-                            if (g != null)
-                            {
-                                _gen = _gen + genreName;
-                            }
-
-                            if (i != ids.Count())
-                            {
-                                _gen = _gen + ", ";
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                ErrorLog.LogError("ERROR: Getting genres by ids", ex);
-                _gen = string.Empty;
-            }
-
-            return _gen;
-        }
-
-        private Genres GetGenres()
-        {
-            _genres = new Genres();
-            var result = string.Empty;
-            try
-            {
-                var s = Assembly.Load(new AssemblyName("eBooksDT.Core")).GetManifestResourceStream(@"eBooksDT.Core.Extras.MovieGenres.json");
-                var sr = new StreamReader(s);
-                result = sr.ReadToEnd();
-
-                _genres = Newtonsoft.Json.JsonConvert.DeserializeObject<Genres>(result);
-                return _genres;
-            }
-            catch (Exception ex)
-            {
-                ErrorLog.LogError("ERROR: Getting Genres", ex);
-                return _genres;
-            }
-        }
-
+       
       
     }
 

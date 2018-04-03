@@ -14,9 +14,9 @@ using System.Threading.Tasks;
 
 namespace eBooksDT.ViewModels
 {
-    public class MovieListInfoPageViewModel : BaseViewModel
+    public class BookListInfoPageViewModel : BaseViewModel
     {
-        private readonly IRepository<Movie> _movieRepo;
+        private readonly IRepository<Book> _BookRepo;
         private CustomList _customList { get; set; }
 
 		private string _listTitle;
@@ -26,31 +26,31 @@ namespace eBooksDT.ViewModels
 			set { SetProperty(ref _listTitle, value); }
 		}
 
-        private List<eBooksDT.Models.Movie> _moviesList;
-        public List<eBooksDT.Models.Movie> MoviesList
+        private List<eBooksDT.Models.Book> _BooksList;
+        public List<eBooksDT.Models.Book> BooksList
         {
-            get { return _moviesList; }
-            set { SetProperty(ref _moviesList, value); }
+            get { return _BooksList; }
+            set { SetProperty(ref _BooksList, value); }
         }
-        public MovieListInfoPageViewModel(IPageDialogService pageDialogService, INavigationService navigationService, IMovieService movieService)
+        public BookListInfoPageViewModel(IPageDialogService pageDialogService, INavigationService navigationService, IBooksService BookService)
             : base(pageDialogService, navigationService)
         {
             var connectionService = Xamarin.Forms.DependencyService.Get<ISQLite>();
-            _movieRepo = new Repository<Movie>(connectionService);
+            _BookRepo = new Repository<Book>(connectionService);
         }
 
         private async Task LoadList()
         {
             try
             {
-                var query = _movieRepo.AsQueryable();
+                var query = _BookRepo.AsQueryable();
 
-                var movieList = await query.Where(x => x.ListId == _customList.id).ToListAsync();
-                MoviesList = movieList;
+                var BookList = await query.Where(x => x.ListId == _customList.id).ToListAsync();
+                BooksList = BookList;
             }
             catch (Exception ex)
             {
-                ErrorLog.LogError("Getting In Theater movies", ex);
+                ErrorLog.LogError("Getting In Theater Books", ex);
             }
         }
 
@@ -64,7 +64,7 @@ namespace eBooksDT.ViewModels
 			}
 			catch (Exception ex)
 			{
-				ErrorLog.LogError("ERROR: Loading list Movies", ex);
+				ErrorLog.LogError("ERROR: Loading list Books", ex);
 			}
         }
     }

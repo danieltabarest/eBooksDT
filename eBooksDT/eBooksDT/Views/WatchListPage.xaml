@@ -7,7 +7,7 @@
 	x:Class="eBooksDT.Views.WatchListPage"
 	Title="WatchList">
 
-<ListView ItemsSource="{Binding ToWatchList}" x:Name="lsMovies"
+<ListView ItemsSource="{Binding ToWatchList}" x:Name="lsBooks"
 		RowHeight="120" 
 		CachingStrategy="RecycleElement">
         <ListView.ItemTemplate>
@@ -41,9 +41,9 @@
 							Aspect="AspectFit"
 							HeightRequest="13"
 							DownsampleToViewSize="true" />
-                                <Label Text="{Binding MovieRate}" FontSize="18" TextColor="#58666e" />
+                                <Label Text="{Binding BookRate}" FontSize="18" TextColor="#58666e" />
                                 <Label Text=" - " FontSize="18" TextColor="#58666e" FontAttributes="Bold" />
-                                <Label Text="{Binding MovieName}" FontSize="18" TextColor="#58666e" FontAttributes="Bold" />
+                                <Label Text="{Binding BookName}" FontSize="18" TextColor="#58666e" FontAttributes="Bold" />
                             </StackLayout>
                             <Label Text="Comedy, Drama, Action, Suspense" FontSize="14" TextColor="Gray" />
                         </StackLayout>

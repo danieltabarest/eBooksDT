@@ -4,6 +4,6 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              	
-             x:Class="eBooksDT.Views.MovieListDetailPage">
+             x:Class="eBooksDT.Views.BookListDetailPage">
     
 </ContentPage>

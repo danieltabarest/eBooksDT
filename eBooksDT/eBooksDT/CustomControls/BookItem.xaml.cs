@@ -8,9 +8,9 @@ using Xamarin.Forms;
 
 namespace eBooksDT.CustomControls
 {
-    public partial class MovieItem : ViewCell
+    public partial class BookItem : ViewCell
     {
-        public MovieItem()
+        public BookItem()
         {
             InitializeComponent();
         }

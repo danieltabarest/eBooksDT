@@ -42,7 +42,6 @@ namespace eBooksDT
         protected override void RegisterTypes()
         {
             //Services
-            Container.RegisterInstance<IMovieService>(new TMDBMovieService());
             Container.RegisterInstance<IBooksService>(new BooksService());
             Container.RegisterInstance<IUserDialogs>(UserDialogs.Instance);
 
@@ -54,17 +53,15 @@ namespace eBooksDT
             Container.RegisterTypeForNavigation<WatchListPage>();
             Container.RegisterTypeForNavigation<LoginPage>();
             Container.RegisterTypeForNavigation<SignUpPage>();
-            Container.RegisterTypeForNavigation<SeenMoviesPage>();
-            Container.RegisterTypeForNavigation<ComingSoonPage>();
-            Container.RegisterTypeForNavigation<InTheatersPage>();
+            Container.RegisterTypeForNavigation<SeenBooksPage>();
             Container.RegisterTypeForNavigation<MostPopularPage>();
             Container.RegisterTypeForNavigation<MainPage>();
-            Container.RegisterTypeForNavigation<MovieDetailPage>();
-            Container.RegisterTypeForNavigation<SearchMoviePage>();
+            Container.RegisterTypeForNavigation<BookDetailPage>();
+            Container.RegisterTypeForNavigation<SearchBookPage>();
             Container.RegisterTypeForNavigation<AddToListPage>();
-            Container.RegisterTypeForNavigation<MovieListsPage>();
-            Container.RegisterTypeForNavigation<MovieListDetailPage>();
-            Container.RegisterTypeForNavigation<MovieListInfoPage>();
+            Container.RegisterTypeForNavigation<BookListsPage>();
+            Container.RegisterTypeForNavigation<BookListDetailPage>();
+            Container.RegisterTypeForNavigation<BookListInfoPage>();
             Container.RegisterTypeForNavigation<SettingsPage>();
         }
 

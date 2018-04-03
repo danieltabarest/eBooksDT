@@ -55,7 +55,7 @@ namespace eBooksDT.ViewModels
             }
             catch (Exception ex)
             {
-                ErrorLog.LogError("Getting In Theater movies", ex);
+                ErrorLog.LogError("Getting In Theater Books", ex);
             }
         }
 

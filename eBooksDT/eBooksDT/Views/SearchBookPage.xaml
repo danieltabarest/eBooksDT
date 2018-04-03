@@ -6,9 +6,9 @@
 	xmlns:helpers="clr-namespace:eBooksDT.Helpers;assembly=eBooksDT"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"	
 	prism:ViewModelLocator.AutowireViewModel="True" 
-	x:Class="eBooksDT.Views.SearchMoviePage"
+	x:Class="eBooksDT.Views.SearchBookPage"
     x:Name="SearchPage"
-	Title="Movie Search">
+	Title="Book Search">
 	<StackLayout>
 	<Grid>
 	  <Grid.RowDefinitions>
@@ -18,7 +18,7 @@
 	    <ColumnDefinition Width="*" />
 	  </Grid.ColumnDefinitions>
 		<SearchBar Grid.Row="0" Grid.Column="0" TextColor="White"  BackgroundColor="#13796C"
-			Text="{Binding SearchField}" Placeholder="Movie Name" PlaceholderColor="Silver" >
+			Text="{Binding SearchField}" Placeholder="Book Name" PlaceholderColor="Silver" >
 				<StackLayout.TextColor>
 				    <OnPlatform x:TypeArguments="Color" 
 				                Android="White" 
@@ -26,12 +26,12 @@
 				  </StackLayout.TextColor>
 			<behaviors:Interaction.Behaviors>
             <behaviors:BehaviorCollection>
-                <behaviors:EventToCommand EventName="TextChanged" Command="{Binding SearchMovieCommand}" PassEventArgument="True" />
+                <behaviors:EventToCommand EventName="TextChanged" Command="{Binding SearchBookCommand}" PassEventArgument="True" />
             </behaviors:BehaviorCollection>
         </behaviors:Interaction.Behaviors>
 			</SearchBar>	
 	</Grid>
-        <ListView ItemsSource="{Binding SearchList}" x:Name="lsMovies"
+        <ListView ItemsSource="{Binding SearchList}" x:Name="lsBooks"
 		RowHeight="120" 
 		CachingStrategy="RecycleElement">
             <behaviors:Interaction.Behaviors>

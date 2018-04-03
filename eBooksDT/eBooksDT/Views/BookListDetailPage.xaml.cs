@@ -2,9 +2,9 @@
 
 namespace eBooksDT.Views
 {
-    public partial class MovieListsPage : ContentPage
+    public partial class BookListDetailPage : ContentPage
     {
-        public MovieListsPage()
+        public BookListDetailPage()
         {
             InitializeComponent();
         }

@@ -18,11 +18,11 @@ namespace eBooksDT.ViewModels
     public class AddToListPageViewModel : BaseViewModel
     {
         private readonly IRepository<CustomList> _listRepo;
-        private readonly IRepository<eBooksDT.Models.Movie> _movieRepo;
+        private readonly IRepository<eBooksDT.Models.Book> _BookRepo;
         private DelegateCommand<ItemTappedEventArgs> _addToListCommand;
         private Command _createListCommand;
         public bool HasData { get; set; } = false;
-        private DetailedMovie _selectedMovie;
+        private DetailedBook _selectedBook;
 
         private string _newList;
         public string NewList
@@ -31,11 +31,11 @@ namespace eBooksDT.ViewModels
             set { SetProperty(ref _newList, value); }
         }
 
-        private List<CustomList> _movieList;
-        public List<CustomList> MovieList
+        private List<CustomList> _BookList;
+        public List<CustomList> BookList
         {
-            get { return _movieList; }
-            set { SetProperty(ref _movieList, value); }
+            get { return _BookList; }
+            set { SetProperty(ref _BookList, value); }
         }
 
         public AddToListPageViewModel(IPageDialogService pageDialogService, INavigationService navigationService)
@@ -43,18 +43,18 @@ namespace eBooksDT.ViewModels
         {
             var connectionService = Xamarin.Forms.DependencyService.Get<ISQLite>();
             _listRepo = new Repository<CustomList>(connectionService);
-            _movieRepo = new Repository<eBooksDT.Models.Movie>(connectionService);
+            _BookRepo = new Repository<eBooksDT.Models.Book>(connectionService);
             Task.Run(LoadList).ConfigureAwait(true);
         }
 
         public override void OnNavigatedTo(NavigationParameters parameters)
         {
-            _selectedMovie = (DetailedMovie)parameters["movie"];
+            _selectedBook = (DetailedBook)parameters["Book"];
         }
 
         public override void OnNavigatedFrom(NavigationParameters parameters)
         {
-            _selectedMovie = (DetailedMovie)parameters["movie"];
+            _selectedBook = (DetailedBook)parameters["Book"];
         }
 
         public DelegateCommand<ItemTappedEventArgs> AddToListCommand
@@ -66,7 +66,7 @@ namespace eBooksDT.ViewModels
                     _addToListCommand = new DelegateCommand<ItemTappedEventArgs>(async selected =>
                     {
                         var list = selected.Item as CustomList;
-                        await AddMovieToList(list);
+                        //await AddBookToList(list);
                     });
                 }
                 return _addToListCommand;
@@ -93,61 +93,16 @@ namespace eBooksDT.ViewModels
         {
             try
             {
-                MovieList = await _listRepo.GetAllAsync();
-                HasData = MovieList.Count() > 0 ? false : true;
+                BookList = await _listRepo.GetAllAsync();
+                HasData = BookList.Count() > 0 ? false : true;
             }
             catch (Exception ex)
             {
-                ErrorLog.LogError("Getting In Theater movies", ex);
+                ErrorLog.LogError("Getting In Theater Books", ex);
             }
         }
 
-        private async Task AddMovieToList(CustomList customList)
-        {
-            var result = true;
-            try
-            {
-                var movie =await  _movieRepo.Get(x => x.MovieId == _selectedMovie.Id);
-                if (movie == null)
-                {
-                    var newMovie = new eBooksDT.Models.Movie
-                    {
-                        MovieName = _selectedMovie.OriginalTitle,
-                        ToWatch = true,
-                        PosterURL = _selectedMovie.PosterUrl,
-                        MovieRate = _selectedMovie?.Score == null ? "N/A" : _selectedMovie?.Score.ToString(),
-                        MovieDescription = _selectedMovie.Overview,
-                        MovieId = _selectedMovie.Id,
-                        DateAdded = DateTime.Now,
-                        ListId = customList.id
-                    };
-                    await _movieRepo.Insert(newMovie);
-                }
-                else
-                {
-                    if (movie.ListId != 0)
-                    {
-                        result = false;
-                        await DisplayDialog("eBooksDT", "This movie is already in other list", "Ok");
-                    }
-                    else
-                    {
-                        movie.ListId = customList.id;
-                        await _movieRepo.Update(movie);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                ErrorLog.LogError("ERROR: Adding movie to list", ex);
-            }
-			if (result)
-			{
-				await DisplayDialog("eBooksDT", "Movie added to list.", "Ok");
-				await GoBack();
-			}
-        }
-
+      
         private async Task CreateList()
         {
             var list = new CustomList() {

@@ -14,21 +14,21 @@ using Xamarin.Forms;
 
 namespace eBooksDT.ViewModels
 {
-    public class MovieListsPageViewModel : BaseViewModel
+    public class BookListsPageViewModel : BaseViewModel
     {
         public bool HasData { get; set; } = false;
         private readonly IRepository<CustomList> _listRepo;
 
         private DelegateCommand<ItemTappedEventArgs> _selectListCommand;
 
-        private List<CustomList> _movieList;
-        public List<CustomList> MovieList
+        private List<CustomList> _BookList;
+        public List<CustomList> BookList
         {
-            get { return _movieList; }
-            set { SetProperty(ref _movieList, value); }
+            get { return _BookList; }
+            set { SetProperty(ref _BookList, value); }
         }
 
-        public MovieListsPageViewModel(IPageDialogService pageDialogService, INavigationService navigationService)
+        public BookListsPageViewModel(IPageDialogService pageDialogService, INavigationService navigationService)
             : base(pageDialogService, navigationService)
         {
             var connectionService = Xamarin.Forms.DependencyService.Get<ISQLite>();
@@ -41,8 +41,8 @@ namespace eBooksDT.ViewModels
         {
             try
             {
-                MovieList = await _listRepo.GetAllAsync();
-                HasData = MovieList.Count() > 0 ? false : true;
+                BookList = await _listRepo.GetAllAsync();
+                HasData = BookList.Count() > 0 ? false : true;
             }
             catch (Exception ex)
             {
@@ -73,7 +73,7 @@ namespace eBooksDT.ViewModels
                 var param = new NavigationParameters();
                 param.Add("list", customList);
 
-				await NavigateToUriWithModalOption(Constants.MovieListInfoPage, param, false);
+				await NavigateToUriWithModalOption(Constants.BookListInfoPage, param, false);
             }
             catch (Exception ex)
             {

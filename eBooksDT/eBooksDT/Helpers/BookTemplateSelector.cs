@@ -8,22 +8,22 @@ using Xamarin.Forms;
 
 namespace eBooksDT.Helpers
 {
-    public class MovieTemplateSelector : Xamarin.Forms.DataTemplateSelector
+    public class BookTemplateSelector : Xamarin.Forms.DataTemplateSelector
     {
-        readonly DataTemplate MovieCard;
+        readonly DataTemplate BookCard;
 
-        public MovieTemplateSelector()
+        public BookTemplateSelector()
         {
-            this.MovieCard= new DataTemplate(typeof(MovieItem));
+            this.BookCard= new DataTemplate(typeof(BookItem));
         }
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            var movieData = item as eBooksDT.Core.Models.DetailedMovie;
+            var BookData = item as eBooksDT.Core.Models.DetailedBook;
             
-            if (movieData== null)
+            if (BookData== null)
                 return null;
-            DataTemplate selectedTemplate = MovieCard;
+            DataTemplate selectedTemplate = BookCard;
           
             return selectedTemplate;
         }

@@ -6,19 +6,12 @@ using Xamarin.Forms.Xaml;
 
 namespace eBooksDT.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MostPopularPage : ContentPage
-	{
-		public MostPopularPage()
-		{
-            try
-            {
-                InitializeComponent();
-            }
-            catch (Exception ex)
-            {
-
-            }
-		}
-	}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class MostPopularPage : ContentPage
+    {
+        public MostPopularPage()
+        {
+            InitializeComponent();
+        }
+    }
 }

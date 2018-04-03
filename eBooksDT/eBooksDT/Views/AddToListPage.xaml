@@ -15,7 +15,7 @@
             <Button Text="Create List" Grid.Column="1" Command="{Binding CreateListCommand}"></Button>
         </Grid>
         <Label Text="No List found" IsVisible="{Binding HasData}"></Label>
-        <ListView CachingStrategy="RecycleElement" ItemsSource="{Binding MovieList}">
+        <ListView CachingStrategy="RecycleElement" ItemsSource="{Binding BookList}">
             <behaviors:Interaction.Behaviors>
                 <behaviors:BehaviorCollection>
                     <behaviors:EventToCommand EventName="ItemTapped" Command="{Binding AddToListCommand}" PassEventArgument="True" />

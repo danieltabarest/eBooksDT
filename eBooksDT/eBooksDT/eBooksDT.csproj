@@ -31,12 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="CustomControls\MovieItem.xaml.cs">
-      <DependentUpon>MovieItem.xaml</DependentUpon>
+    <Compile Include="CustomControls\BookItem.xaml.cs">
+      <DependentUpon>BookItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\Repository.cs" />
     <Compile Include="Helpers\AsyncSemaphore.cs" />
-    <Compile Include="Helpers\MovieTemplateSelector.cs" />
+    <Compile Include="Helpers\BookTemplateSelector.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\ISQLAsyncConnectionService.cs" />
     <Compile Include="Interfaces\ISQLite.cs" />
@@ -48,16 +48,15 @@
     <Compile Include="Services\UserService.cs" />
     <Compile Include="ViewModels\AddToListPageViewModel.cs" />
     <Compile Include="ViewModels\MostPopularPageViewModel.cs" />
-    <Compile Include="ViewModels\MovieDetailPageViewModel.cs" />
-    <Compile Include="ViewModels\MovieListDetailPageViewModel.cs" />
-    <Compile Include="ViewModels\MovieListInfoPageViewModel.cs" />
-    <Compile Include="ViewModels\MovieListsPageViewModel.cs" />
+    <Compile Include="ViewModels\BookDetailPageViewModel.cs" />
+    <Compile Include="ViewModels\BookListDetailPageViewModel.cs" />
+    <Compile Include="ViewModels\BookListInfoPageViewModel.cs" />
+    <Compile Include="ViewModels\BookListsPageViewModel.cs" />
     <Compile Include="ViewModels\NavPageViewModel.cs" />
-    <Compile Include="ViewModels\SearchMoviePageViewModel.cs" />
-    <Compile Include="ViewModels\SeenMoviesPageViewModel.cs" />
+    <Compile Include="ViewModels\SearchBookPageViewModel.cs" />
+    <Compile Include="ViewModels\SeenBooksPageViewModel.cs" />
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
     <Compile Include="ViewModels\SignUpPageViewModel.cs" />
-    <Compile Include="ViewModels\WatchListPageViewModel.cs" />
     <Compile Include="Views\AddToListPage.xaml.cs">
       <DependentUpon>AddToListPage.xaml</DependentUpon>
     </Compile>
@@ -73,23 +72,23 @@
     <Compile Include="Views\MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MovieDetailPage.xaml.cs">
-      <DependentUpon>MovieDetailPage.xaml</DependentUpon>
+    <Compile Include="Views\BookDetailPage.xaml.cs">
+      <DependentUpon>BookDetailPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MovieListDetailPage.xaml.cs">
-      <DependentUpon>MovieListDetailPage.xaml</DependentUpon>
+    <Compile Include="Views\BookListDetailPage.xaml.cs">
+      <DependentUpon>BookListDetailPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MovieListInfoPage.xaml.cs">
-      <DependentUpon>MovieListInfoPage.xaml</DependentUpon>
+    <Compile Include="Views\BookListInfoPage.xaml.cs">
+      <DependentUpon>BookListInfoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MovieListsPage.xaml.cs">
-      <DependentUpon>MovieListsPage.xaml</DependentUpon>
+    <Compile Include="Views\BookListsPage.xaml.cs">
+      <DependentUpon>BookListsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NavPage.xaml.cs">
       <DependentUpon>NavPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SeenMoviesPage.xaml.cs">
-      <DependentUpon>SeenMoviesPage.xaml</DependentUpon>
+    <Compile Include="Views\SeenBooksPage.xaml.cs">
+      <DependentUpon>SeenBooksPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -99,18 +98,10 @@
     </Compile>
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\Movie.cs" />
-    <Compile Include="Views\InTheatersPage.xaml.cs">
-      <DependentUpon>InTheatersPage.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Book.cs" />
     <Compile Include="Views\MostPopularPage.xaml.cs">
       <DependentUpon>MostPopularPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ComingSoonPage.xaml.cs">
-      <DependentUpon>ComingSoonPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\InTheatersPageViewModel.cs" />
-    <Compile Include="ViewModels\ComingSoonPageViewModel.cs" />
     <Compile Include="Views\CrashPage.xaml.cs">
       <DependentUpon>CrashPage.xaml</DependentUpon>
     </Compile>
@@ -123,8 +114,8 @@
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SearchMoviePage.xaml.cs">
-      <DependentUpon>SearchMoviePage.xaml</DependentUpon>
+    <Compile Include="Views\SearchBookPage.xaml.cs">
+      <DependentUpon>SearchBookPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\MenuItem.cs" />
   </ItemGroup>
@@ -135,7 +126,7 @@
     <EmbeddedResource Include="Views\MainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SeenMoviesPage.xaml">
+    <EmbeddedResource Include="Views\SeenBooksPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\LoginPage.xaml">
@@ -144,13 +135,7 @@
     <EmbeddedResource Include="Views\SignUpPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\InTheatersPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\MostPopularPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ComingSoonPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CrashPage.xaml">
@@ -162,7 +147,7 @@
     <EmbeddedResource Include="Views\SettingsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SearchMoviePage.xaml">
+    <EmbeddedResource Include="Views\SearchBookPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -244,13 +229,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CustomControls\MovieItem.xaml">
+    <EmbeddedResource Include="CustomControls\BookItem.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\MovieDetailPage.xaml">
+    <EmbeddedResource Include="Views\BookDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -262,19 +247,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\MovieListsPage.xaml">
+    <EmbeddedResource Include="Views\BookListsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\MovieListDetailPage.xaml">
+    <EmbeddedResource Include="Views\BookListDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\MovieListInfoPage.xaml">
+    <EmbeddedResource Include="Views\BookListInfoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

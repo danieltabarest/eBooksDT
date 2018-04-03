@@ -4,9 +4,9 @@ using Xamarin.Forms.Xaml;
 namespace eBooksDT.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SeenMoviesPage : ContentPage
+	public partial class SeenBooksPage : ContentPage
 	{
-		public SeenMoviesPage()
+		public SeenBooksPage()
 		{
 			InitializeComponent();
 		}

@@ -4,10 +4,10 @@
 	xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
 	xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"	
 	prism:ViewModelLocator.AutowireViewModel="True" 
-	x:Class="eBooksDT.Views.SeenMoviesPage"
-	Title="Seen Movies">
+	x:Class="eBooksDT.Views.SeenBooksPage"
+	Title="Seen Books">
 	
-	<ListView ItemsSource="{Binding SeenMoviesList}" x:Name="lsMovies"
+	<ListView ItemsSource="{Binding SeenBooksList}" x:Name="lsBooks"
 		RowHeight="120" 
 		CachingStrategy="RecycleElement">
         <ListView.ItemTemplate>
@@ -41,9 +41,9 @@
 							Aspect="AspectFit"
 							HeightRequest="13"
 							DownsampleToViewSize="true" />
-                                <Label Text="{Binding MovieRate}" FontSize="18" TextColor="#58666e" />
+                                <Label Text="{Binding BookRate}" FontSize="18" TextColor="#58666e" />
                                 <Label Text=" - " FontSize="18" TextColor="#58666e" FontAttributes="Bold" />
-                                <Label Text="{Binding MovieName}" FontSize="18" TextColor="#58666e" FontAttributes="Bold" />
+                                <Label Text="{Binding BookName}" FontSize="18" TextColor="#58666e" FontAttributes="Bold" />
                             </StackLayout>
                             <Label Text="Comedy, Drama, Action, Suspense" FontSize="14" TextColor="Gray" />
                         </StackLayout>

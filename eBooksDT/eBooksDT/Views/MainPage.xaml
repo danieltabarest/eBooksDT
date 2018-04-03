@@ -8,7 +8,5 @@
 	Title="MainPage">
 	<TabbedPage.Children>
         <local:MostPopularPage />
-        <local:InTheatersPage />
-        <local:ComingSoonPage />
     </TabbedPage.Children>
 </TabbedPage>

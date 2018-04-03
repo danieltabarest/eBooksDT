@@ -6,7 +6,7 @@
 	x:Class="eBooksDT.Views.LoginPage"
   Title="Login">
 	<StackLayout Padding="15,25,15,15">
-		<Image Source="moviesLogo"></Image>
+		<Image Source="BooksLogo"></Image>
 		<Entry Placeholder="User name" Text="{Binding UserName}"></Entry>
 		<Entry Placeholder="Password" IsPassword="True" Text="{Binding Password}"></Entry>
 		<Button Text="Login" Command="{Binding LoginCommand}"></Button>

@@ -4,12 +4,12 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
 			xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"	
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="eBooksDT.Views.MovieDetailPage"
-			Title="{Binding MovieItem.ComposedTitle}">
+             x:Class="eBooksDT.Views.BookDetailPage"
+			Title="{Binding BookItem.Title}">
 	<ScrollView Orientation="Vertical" >
     <StackLayout HorizontalOptions="Fill">
 			<ffimageloading:CachedImage x:Name="pPhoto" 
-			Source="{Binding Path=MovieItem.PosterUrl}"  
+			Source="{Binding Path=BookItem.Image}"  
 			ErrorPlaceholder="error.png" 
 				VerticalOptions="StartAndExpand"
 				Margin="0,-40,0,0"
@@ -19,11 +19,11 @@
 			HeightRequest="300"
 			Aspect="AspectFill" 
 			DownsampleToViewSize="true" />
-        <Label Text="{Binding MovieItem.OriginalTitle}" FontAttributes="Bold" Margin="15"></Label>
-        <Label Text="{Binding MovieItem.GenresCommaSeparated}" Margin="15"></Label>
-        <Label Text="{Binding MovieItem.Overview}" LineBreakMode="WordWrap" FontSize="13" TextColor="Black" Margin="15" />
-        <Label Text="{Binding MovieItem.ReleaseDate, StringFormat='Release Date: {0}'}" Margin="15"></Label>
-        <Label Text="{Binding MovieItem.Score, StringFormat='TMDB Score: {0}'}" Margin="15"></Label>
+            <Label Text="{Binding BookItem.Title}" FontAttributes="Bold" Margin="15"></Label>
+            <Label Text="{Binding BookItem.SubTitle}" Margin="15"></Label>
+            <Label Text="{Binding BookItem.Description}" LineBreakMode="WordWrap" FontSize="13" TextColor="Black" Margin="15" />
+            <Label Text="{Binding BookItem.isbn, StringFormat='isbn Date: {0}'}" Margin="15"></Label>
+        <!--<Label Text="{Binding BookItem.Score, StringFormat='TMDB Score: {0}'}" Margin="15"></Label>-->
     </StackLayout>
 		</ScrollView>
 </ContentPage>

@@ -11,7 +11,7 @@
     x:Name="PopularPage"
 	BackgroundColor="Silver">
 
-    <ListView ItemsSource="{Binding MostPopularList}" x:Name="lsMovies"
+    <ListView ItemsSource="{Binding MostPopularList}" x:Name="lsBooks"
 		RowHeight="120" 
 		CachingStrategy="RecycleElement">
         <behaviors:Interaction.Behaviors>
