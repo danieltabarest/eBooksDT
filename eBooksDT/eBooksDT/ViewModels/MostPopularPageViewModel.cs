@@ -51,7 +51,6 @@ namespace eBooksDT.ViewModels
 		{
 			try
 			{
-				//MostPopularList = await _BookService.DiscoverBook(Core.Constants.DiscoverOption.Popular);
                 MostPopularList = await _ibooksservice.DiscoverBooks(Core.Constants.DiscoverOption.Popular);
             }
 			catch (Exception ex)

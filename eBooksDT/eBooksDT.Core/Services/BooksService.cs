@@ -32,25 +32,20 @@ namespace eBooksDT.Core
         }
 
       
-        public async Task<List<DetailedBook>> SearchBooks(string BooksTitle)
+        public async Task<List<Books>> SearchBooks(string BooksTitle)
         {
             try
             {
-                /*var res = await BaseClient.GetAsync(string.Format(AppConstants.TmdbMovieSearchUrl, AppConstants.TmdbApiKey,
-                    movieTitle))
+                var res = await BaseClient.GetAsync(string.Format(AppConstants.TmdbBookSearchUrl, BooksTitle));
                 res.EnsureSuccessStatusCode();
 
                 var json = await res.Content.ReadAsStringAsync();
 
                 if (string.IsNullOrEmpty(json)) return null;
 
-                var movies = JsonConvert.DeserializeObject<Movies>(json);
-                await GetConfigurationIfNeeded();
+                var books = JsonConvert.DeserializeObject<Book>(json);
 
-                var movieList = movies.results.Where(x => x.original_title != null).Select(movie => GetDetailMovie(movie)).ToList();
-
-                return movieList;*/
-                return null;
+                return books.Books;
             }
             catch (Exception ex)
             {
@@ -142,6 +137,19 @@ namespace eBooksDT.Core
             try
             {
                 return null;
+
+                var res = await BaseClient.GetAsync(string.Format(AppConstants.TmdbBookSearchUrl, id));
+                res.EnsureSuccessStatusCode();
+
+                var json = await res.Content.ReadAsStringAsync();
+
+                if (string.IsNullOrEmpty(json)) return null;
+
+                var detailedbook = JsonConvert.DeserializeObject<DetailedBook>(json);
+
+                //var movieList = detailedbook.results.Where(x => x.original_title != null).Select(movie => GetDetailMovie(movie)).ToList();
+
+                //return movieList;
                 /* var res = await BaseClient.GetAsync(string.Format(AppConstants.TmdbMovieUrl, AppConstants.TmdbApiKey,
                      id));
                  res.EnsureSuccessStatusCode();

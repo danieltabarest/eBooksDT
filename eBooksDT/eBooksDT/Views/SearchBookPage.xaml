@@ -17,11 +17,12 @@
 	  <Grid.ColumnDefinitions>
 	    <ColumnDefinition Width="*" />
 	  </Grid.ColumnDefinitions>
-		<SearchBar Grid.Row="0" Grid.Column="0" TextColor="White"  BackgroundColor="#13796C"
+
+            <SearchBar Grid.Row="0" Grid.Column="0" TextColor="WhiteSmoke" HeightRequest="40.0" BackgroundColor="#13796C"
 			Text="{Binding SearchField}" Placeholder="Book Name" PlaceholderColor="Silver" >
 				<StackLayout.TextColor>
 				    <OnPlatform x:TypeArguments="Color" 
-				                Android="White" 
+				                Android="Black" 
 				                iOS="Black"/>
 				  </StackLayout.TextColor>
 			<behaviors:Interaction.Behaviors>
@@ -50,7 +51,7 @@
                             <ffimageloading:CachedImage 
 										x:Name="pPhoto" 
 										HorizontalOptions="Start"
-										Source="{Binding PosterUrl}"  
+										Source="{Binding Image}"  
 										ErrorPlaceholder="error.png" 
 										TransparencyEnabled="True" 
 										CacheDuration="1"
@@ -70,16 +71,11 @@
 										Aspect="AspectFit"
 										HeightRequest="13"
 										DownsampleToViewSize="true" />
-                                    <Label Text="{Binding Score}" FontSize="18" TextColor="#58666e" />
+                                    <Label Text="{Binding ID}" FontSize="18" TextColor="#58666e" />
                                     <Label Text=" - " FontSize="16" TextColor="#58666e" FontAttributes="Bold" />
-                                    <Label Text="{Binding ComposedTitle}" FontSize="16" TextColor="#58666e" FontAttributes="Bold" />
+                                    <Label Text="{Binding Title}" FontSize="16" TextColor="#58666e" FontAttributes="Bold" />
                                 </StackLayout>
-                                <Label Text="{Binding GenresCommaSeparated}" FontSize="14" TextColor="Gray" />
-                                <StackLayout Orientation="Horizontal">
-                                    <Button Text="+ Watchlist" Command="{Binding Source={x:Reference SearchPage}, Path=BindingContext.AddWatchListCommand}" CommandParameter="{Binding .}" />
-                                    <Button Text="+ Seen" Command="{Binding Source={x:Reference SearchPage}, Path=BindingContext.AddSeenCommand}" CommandParameter="{Binding .}" />
-                                    <Button Text="+ List" Command="{Binding Source={x:Reference SearchPage}, Path=BindingContext.AddListCommand}" CommandParameter="{Binding .}" />
-                                </StackLayout>
+                                <Label Text="{Binding Description}" FontSize="14" TextColor="Gray" />
                             </StackLayout>
                         </Grid>
                     </ViewCell>

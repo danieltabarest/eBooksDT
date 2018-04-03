@@ -3,9 +3,14 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
             xmlns:views="clr-namespace:eBooksDT.Views"
-			xmlns:appInfo="clr-namespace:eBooksDT.assembly=eBooksDT"
+            xmlns:appInfo="clr-namespace:eBooksDT;assembly=eBooksDT"
             prism:ViewModelLocator.AutowireViewModel="True"
 			Title="Book List"
 			x:Class="eBooksDT.Views.HomePage">
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Name="MenuItem1" Order="Primary" Command="{Binding NavigateToUriCommand}" 
+				CommandParameter="{x:Static appInfo:Constants.SearchBookPage}"
+		Icon="ic_search" Text="Search" Priority="0" />
+    </TabbedPage.ToolbarItems>
     <views:MostPopularPage Icon="ic_grade.png" />
 </TabbedPage>

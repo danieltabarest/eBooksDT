@@ -7,8 +7,9 @@ namespace eBooksDT.Core.Constants
 	{
 		public const string TmdbApiKey = "c0d0458190688fc0796d41acf1cef8ec";
 		public const string TmdbBaseUrl = "https://api.theBookdb.org/3/";
-		public const string TmdbBookSearchUrl = "search/multi?api_key={0}&query={1}";
-		public const string TmdbBookInTheaters = "discover/Book?api_key={0}&primary_release_date.gte={1}&primary_release_date.lte={2}";
+		//public const string TmdbBookSearchUrl = "{0}&query={1}";
+        public const string TmdbBookSearchUrl = "http://it-ebooks-api.info/v1/search/{0}";
+        public const string TmdbBookInTheaters = "discover/Book?api_key={0}&primary_release_date.gte={1}&primary_release_date.lte={2}";
 		public const string TmdbBookPopular = "discover/Book?api_key={0}&sort_by=popularity.desc";
         public const string BooksPopular = "http://it-ebooks-api.info/v1/search/php mysql";
         public const string TmdbBookHighestRated = "discover/Book?api_key={0}&certification_country=US&certification=R&sort_by=vote_average.desc";

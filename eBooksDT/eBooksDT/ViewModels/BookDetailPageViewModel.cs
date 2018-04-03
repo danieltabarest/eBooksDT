@@ -22,8 +22,8 @@ namespace eBooksDT.ViewModels
         private readonly IBooksService _BookService;
         private readonly IRepository<eBooksDT.Models.Book> _BookRepo;
 
-        private DetailedBook _BookItem;
-        public DetailedBook BookItem
+        private Books _BookItem;
+        public Books BookItem
         {
             get { return _BookItem; }
             set { SetProperty(ref _BookItem, value); }
@@ -55,12 +55,12 @@ namespace eBooksDT.ViewModels
 
 		public override void OnNavigatedTo(NavigationParameters parameters)
 		{
-			BookItem = (DetailedBook)parameters["Book"];
+			BookItem = (Books)parameters["books"];
 		}
 
 		public override void OnNavigatedFrom(NavigationParameters parameters)
 		{
-			BookItem = (DetailedBook)parameters["Book"];
+			BookItem = (Books)parameters["books"];
 		}
 
        

@@ -29,17 +29,17 @@ namespace eBooksDT.ViewModels
 			set { SetProperty(ref _searchField, value); }
 		}
 
-		private List<eBooksDT.Core.Models.DetailedBook> _searchList;
-		public List<eBooksDT.Core.Models.DetailedBook> SearchList
+		private List<eBooksDT.Core.Models.Books> _searchList;
+		public List<eBooksDT.Core.Models.Books> SearchList
 		{
 			get { return _searchList; }
 			set { SetProperty(ref _searchList, value); }
 		}
 
 		private DelegateCommand<TextChangedEventArgs> _searchBookCommand;
-        public DelegateCommand<DetailedBook> AddWatchListCommand { get; set; }
-        public DelegateCommand<DetailedBook> AddSeenCommand { get; set; }
-        public DelegateCommand<DetailedBook> AddListCommand { get; set; }
+        public DelegateCommand<Books> AddWatchListCommand { get; set; }
+        public DelegateCommand<Books> AddSeenCommand { get; set; }
+        public DelegateCommand<Books> AddListCommand { get; set; }
 
         private DelegateCommand<ItemTappedEventArgs> _goToDetailPage;
 
@@ -54,7 +54,7 @@ namespace eBooksDT.ViewModels
 				_BookRepo = new Repository<eBooksDT.Models.Book>(connectionService);
 			}
 
-            AddListCommand = new DelegateCommand<DetailedBook>(async (DetailedBook arg) => await AddToList(arg));
+            AddListCommand = new DelegateCommand<Books>(async (Books arg) => await AddToList(arg));
         }
 
 		public DelegateCommand<TextChangedEventArgs> SearchBookCommand
@@ -104,8 +104,8 @@ namespace eBooksDT.ViewModels
 					_goToDetailPage = new DelegateCommand<ItemTappedEventArgs>(async selected =>
 					{
 						var param = new NavigationParameters();
-						var Book = selected.Item as eBooksDT.Core.Models.DetailedBook;
-						param.Add("Book", Book);
+						var Book = selected.Item as eBooksDT.Core.Models.Books;
+						param.Add("books", Book);
 
 						await NavigateToUri(Constants.BookDetailPageNoNav, param);
 					});
@@ -117,7 +117,7 @@ namespace eBooksDT.ViewModels
 
        
 
-        private async Task AddToList(DetailedBook detailedBook)
+        private async Task AddToList(Books Books)
         {
             try
             {

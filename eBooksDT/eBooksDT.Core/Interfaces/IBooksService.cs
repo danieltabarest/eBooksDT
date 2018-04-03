@@ -8,7 +8,7 @@ namespace eBooksDT.Core.Interfaces
 {
 	public interface IBooksService
     {
-		Task<List<DetailedBook>> SearchBooks(string BooksTitle);
+		Task<List<Books>> SearchBooks(string BooksTitle);
 		Task<DetailedBook> DetailedBooksFromId(int id);
 		Task<List<Books>> DiscoverBooks(DiscoverOption option);
 	}
